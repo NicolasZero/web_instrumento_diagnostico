@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 const sendForm = async (data) => {
     try {
-        const response = await fetch('http://localhost:3000/registro/', {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

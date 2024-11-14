@@ -1,18 +1,18 @@
 // import fkg from "../img/"
 // La funcion toBase64 convierte una imagen a base64 para poder ser usada en el pdf
 function toBase64(url) {
-  return new Promise((resolve, reject) => {
-    let image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.onload = function () {
-      let canvas = document.createElement("canvas");
-      canvas.width = this.naturalWidth;
-      canvas.height = this.naturalHeight;
-      canvas.getContext("2d").drawImage(this, 0, 0);
-      resolve(canvas.toDataURL("image/png").split(",")[1]);
-    };
-    image.src = url;
-  });
+    return new Promise((resolve, reject) => {
+        let image = new Image();
+        image.crossOrigin = 'anonymous';
+        image.onload = function () {
+            let canvas = document.createElement("canvas");
+            canvas.width = this.naturalWidth;
+            canvas.height = this.naturalHeight;
+            canvas.getContext("2d").drawImage(this, 0, 0);
+            resolve(canvas.toDataURL("image/png").split(",")[1]);
+        };
+        image.src = url;
+    });
 }
 
 // crear variables para las imagenes a usar en el pdf
@@ -22,15 +22,15 @@ let imagen2
 // cargar las imagenes en base64
 async function loadImages() {
     try {
-      imagen1 = await toBase64('https://th.bing.com/th/id/OIP.N1HgJ7u7uFxu69myO4t8FwHaCx?rs=1&pid=ImgDetMain');
-      imagen2 = await toBase64('https://3.bp.blogspot.com/-9fKARIk6pVQ/Vvgp8HHgooI/AAAAAAAAABo/Jze4savfueUIinmwLdvoLo9J17sBL3__w/s1600/inamujer.jpg');
-      console.log('Images loaded');
+        imagen1 = await toBase64('https://th.bing.com/th/id/OIP.N1HgJ7u7uFxu69myO4t8FwHaCx?rs=1&pid=ImgDetMain');
+        imagen2 = await toBase64('https://3.bp.blogspot.com/-9fKARIk6pVQ/Vvgp8HHgooI/AAAAAAAAABo/Jze4savfueUIinmwLdvoLo9J17sBL3__w/s1600/inamujer.jpg');
+        console.log('Images loaded');
     } catch (error) {
-      console.error('Error loading images:', error);
+        console.error('Error loading images:', error);
     }
-  }
-  
-  loadImages();
+}
+
+loadImages();
 
 
 function handleExportPDF(
@@ -43,7 +43,7 @@ function handleExportPDF(
     const maxWidthHeading = pageWidth - 20; // Maximum width for the text (with some padding)
     const title = "Reporte respuesta de formulario";
 
-     // asi se agregan las imagenes al pdf
+    // asi se agregan las imagenes al pdf
     doc.addImage(imagen1, "PNG", 10, 5, 60, 15);
     doc.addImage(imagen2, "PNG", 170, 0, 25, 25);
 
@@ -118,7 +118,7 @@ function handleExportPDF(
     const titleSection9a = "Testigo No. 2"
     const titleSection9b = "Enlace inamujer"
     const { nombre_testigo1, cedula_testigo1, apellido_testigo1, cargo_testigo1, nombre_testigo2,
-        cedula_testigo2, apellido_testigo2, cargo_testigo2, nombre_enlace_inm, apellido_enlace_inm, cedula_enlace_inm, cargo_enlace_inm 
+        cedula_testigo2, apellido_testigo2, cargo_testigo2, nombre_enlace_inm, apellido_enlace_inm, cedula_enlace_inm, cargo_enlace_inm
     } = dataFormObject;
 
     // Add title main
@@ -134,10 +134,10 @@ function handleExportPDF(
     const subtitleWidth = doc.getTextWidth(titleSection1);
     const subtitleX = (pageWidth - subtitleWidth) / 2;
     const subtitleY = 35;
-    const colorTitleSection =[112, 48, 160];
+    const colorTitleSection = [112, 48, 160];
 
     // Draw background rectangle for the subtitle
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, subtitleY - 7, pageWidth, 10, 'F');
 
 
@@ -167,8 +167,8 @@ function handleExportPDF(
 
     let yPosition = 70; // Starting y position for the text
     const lineHeight = 10; // Height of each line of text
-    const inputHeight = 8; // Height of the input box
-    const inputWidth = 100; // Width of the input box
+    let inputHeight = 8; // Height of the input box
+    let inputWidth = 100; // Width of the input box
 
     const section1Data = [
         { label: "Nombre", value: nombre },
@@ -220,9 +220,6 @@ function handleExportPDF(
         { label: "Zona postal", value: zona_postal },
     ];
 
-    // asi se agregan las imagenes al pdf
-    //   doc.addImage(imagen1, "PNG", 0, 0, 210, 25);
-    //   doc.addImage(imagen2, "PNG", 0, 25, 20, 20);
     section1aData.forEach(({ label, value }) => {
         if (yPosition + lineHeight + inputHeight > pageHeight) {
             doc.addPage();
@@ -242,7 +239,7 @@ function handleExportPDF(
     const section2X = (pageWidth - section2Width) / 2;
     const section2Y = yPosition;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section2Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -256,32 +253,44 @@ function handleExportPDF(
     const section2Data = [
         { label: "Sede", value: sede_id },
         { label: "Propia", value: propia, checkbox: true },
-        { label: "Descripción de la sede propia", value: propia_desc },
+        { label: "Descripción de la sede propia", value: propia_desc, expand: true },
         { label: "Alquilada", value: alquilada, checkbox: true },
-        { label: "Descripción de la sede alquilada", value: alquilada_desc },
+        { label: "Descripción de la sede alquilada", value: alquilada_desc, expand: true },
         { label: "Apoyo interinstitucional", value: apoyo_interinstitucional, checkbox: true },
-        { label: "Descripcion apoyo interintitucional", value: apoyo_interinstitucional_dec },
+        { label: "Descripcion apoyo interintitucional", value: apoyo_interinstitucional_dec, expand: true },
         { label: "Techos", value: techos, checkbox: true },
-        { label: "Descripción de los techos", value: techos_desc },
+        { label: "Descripción de los techos", value: techos_desc, expand: true },
         { label: "Paredes", value: paredes, checkbox: true },
-        { label: "Descripción de las paredes", value: paredes_desc },
+        { label: "Descripción de las paredes", value: paredes_desc, expand: true },
         { label: "Pisos", value: pisos, checkbox: true },
-        { label: "Descripción de los pisos", value: pisos_desc },
-        { label: "Otra infraestructura", value: otra_infraestructura },
+        { label: "Descripción de los pisos", value: pisos_desc, expand: true },
+        { label: "Otra infraestructura", value: otra_infraestructura, expand: true },
     ];
 
-    section2Data.forEach(({ label, value, checkbox }) => {
+    // Variables for the expandable inputs
+    let inputHeightDesc = 15,
+        inputWidthDesc = 125;
+
+    section2Data.forEach(({ label, value, checkbox, expand }) => {
         if (yPosition + lineHeight + inputHeight > pageHeight) {
             doc.addPage();
             yPosition = 0; // Reset y position for the new page
         }
         doc.text(`${label}:`, 10, yPosition + 15, { maxWidth: maxWidthHeading });
-        doc.rect(80, yPosition - inputHeight + 18, inputWidth, inputHeight);
-        if (checkbox && value !== "") {
-            value = value ? "Sí" : "No";
+        if (expand) {
+            doc.rect(80, yPosition - inputHeight + 15, inputWidthDesc, inputHeightDesc);
+            doc.text(String(value), 82, yPosition + 11, { maxWidth: 120 });
+        }
+        if (!expand) {
+            if (checkbox && value !== "") {
+                value = value ? "Sí" : "No";
+            }
+            doc.rect(80, yPosition - inputHeight + 18, inputWidth, inputHeight);
+            doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading });
         }
 
-        doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading }); // Draw value inside input box
+
+        // Draw value inside input box
         yPosition += lineHeight + inputHeight; // Move down for the next line
     });
 
@@ -293,7 +302,7 @@ function handleExportPDF(
     const section3X = (pageWidth - section3Width) / 2;
     const section3Y = yPosition;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section3Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -306,28 +315,33 @@ function handleExportPDF(
 
     const section3Data = [
         { label: "Electricidad", value: electricidad, checkbox: true },
-        { label: "Descripción de la electricidad", value: electricidad_desc },
+        { label: "Descripción de la electricidad", value: electricidad_desc, expand: true },
         { label: "Agua", value: agua, checkbox: true },
-        { label: "Descripción del agua", value: agua_desc },
+        { label: "Descripción del agua", value: agua_desc, expand: true },
         { label: "Telefonía", value: telefonia, checkbox: true },
-        { label: "Descripción de la telefonía", value: telefonia_desc },
+        { label: "Descripción de la telefonía", value: telefonia_desc, expand: true },
         { label: "Internet", value: internet, checkbox: true },
-        { label: "Descripción del internet", value: internet_desc },
-        { label: "Otro servicio público", value: otro_servicio_publico },
+        { label: "Descripción del internet", value: internet_desc, expand: true },
+        { label: "Otro servicio público", value: otro_servicio_publico, expand: true },
     ];
 
-    section3Data.forEach(({ label, value, checkbox }) => {
+    section3Data.forEach(({ label, value, checkbox, expand }) => {
         if (yPosition + lineHeight + inputHeight > pageHeight) {
             doc.addPage();
             yPosition = 0; // Reset y position for the new page
         }
         doc.text(`${label}:`, 10, yPosition + 15, { maxWidth: maxWidthHeading });
-        doc.rect(80, yPosition - inputHeight + 18, inputWidth, inputHeight);
-        if (checkbox && value !== "") {
-            value = value ? "Sí" : "No";
+        if (expand) {
+            doc.rect(80, yPosition - inputHeight + 15, inputWidthDesc, inputHeightDesc);
+            doc.text(String(value), 82, yPosition + 11, { maxWidth: 120 });
         }
-
-        doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading }); // Draw value inside input box
+        if (!expand) {
+            if (checkbox && value !== "") {
+                value = value ? "Sí" : "No";
+            }
+            doc.rect(80, yPosition - inputHeight + 18, inputWidth, inputHeight);
+            doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading });
+        } // Draw value inside input box
         yPosition += lineHeight + inputHeight; // Move down for the next line
     });
 
@@ -339,7 +353,7 @@ function handleExportPDF(
     const section4X = (pageWidth - section4Width) / 2;
     const section4Y = yPosition;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section4Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -398,7 +412,7 @@ function handleExportPDF(
     const section5X = (pageWidth - section5Width) / 2;
     const section5Y = 15;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section5Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -549,7 +563,7 @@ function handleExportPDF(
     const section6X = (pageWidth - section6Width) / 2;
     const section6Y = 10;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section6Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -602,7 +616,7 @@ function handleExportPDF(
     const section7X = (pageWidth - section7Width) / 2;
     const section7Y = 10;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section7Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -645,7 +659,7 @@ function handleExportPDF(
     const section8X = (pageWidth - section8Width) / 2;
     const section8Y = 10;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section8Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -659,7 +673,7 @@ function handleExportPDF(
 
     doc.text(`Observaciones:`, 10, yPosition + 25, { maxWidth: maxWidthHeading });
     doc.rect(45, yPosition - inputHeight + 30, inputWidthObservacionCalcuted, inputHeightObservacionCalcuted); // Draw input box
-    doc.text(observacion, 47, yPosition + 27, { maxWidth: pageWidth - 60 }); // Draw value inside input box
+    doc.text(observacion, 47, yPosition + 24, { maxWidth: pageWidth - 60 }); // Draw value inside input box
     yPosition += lineHeight + inputHeight; // Move down for the next line
 
     //Recomedaciones
@@ -669,7 +683,7 @@ function handleExportPDF(
 
     doc.text(`Recomendaciones:`, 6, yPosition + 100, { maxWidth: maxWidthHeading });
     doc.rect(45, yPosition - inputHeight + 105, inputWidthRecomendacionCalcuted, inputHeightRecomendacionCalcuted); // Draw input box
-    doc.text(recomendaciones, 47, yPosition + 104, { maxWidth: pageWidth - 60 }); // Draw value inside input box
+    doc.text(recomendaciones, 47, yPosition + 100, { maxWidth: pageWidth - 60 }); // Draw value inside input box
     yPosition += lineHeight + inputHeight; // Move down for the next line
 
 
@@ -683,7 +697,7 @@ function handleExportPDF(
     const section9X = (pageWidth - section9Width) / 2;
     const section9Y = 10;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section9Y - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -717,7 +731,7 @@ function handleExportPDF(
     const section9aX = (pageWidth - section9aWidth) / 2;
     const section9aY = 100;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section9aY - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
@@ -751,7 +765,7 @@ function handleExportPDF(
     const section9bX = (pageWidth - section9bWidth) / 2;
     const section9bY = 200;
 
-    doc.setFillColor(colorTitleSection[0],colorTitleSection[1],colorTitleSection[2]); // Black background
+    doc.setFillColor(colorTitleSection[0], colorTitleSection[1], colorTitleSection[2]); // Black background
     doc.rect(0, section9bY - 7, pageWidth, 10, 'F');
 
     doc.setTextColor(255, 255, 255); // White text
