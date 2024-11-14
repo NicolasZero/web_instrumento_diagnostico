@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="es" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <!-- icon -->
+    <link rel="icon" href="./assets/img/logo_Inamujer.png" type="image/x-png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/theme.color.css">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <body class="bg-indigo text-black">
+        <div class="container p-0" style="background-color: #eee9e9;">
+            <div class="row mx-1 align-items-center">
+                <div class="col-4">
+                    <img class="img-fluid" src="./assets/img/logo_horizontal.png" alt="">
+                </div>
+                <div class="col-4">
+                    <h2 class="px-3 py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+                </div>
+                <div class="d-flex col-4 justify-content-end" style="height: 200px;">
+                    <img class="rounded"  src="./assets/img/logo_Inamujer.png"/>
+                </div>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">Inicio de sesión</h4>
+
+            <div class="">
+                <div class="bg-secondary mx-auto" style="min-width: 150px; width: 50%; height: 50px;"></div>
+            </div>
+            <div class="row p-3">
+                <div class="col-10">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Mantener sesión activa</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary">Ingresar</button>
+            </div>
+        </div>
+        <script>
+            // localStorage.setItem(key, value)
+        </script>
+    </body>
+
+</html>

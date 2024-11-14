@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="es" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumento de Diagnostico</title>
+    <!-- icon -->
+    <link rel="icon" href="../../assets/img/logo_Inamujer.png" type="image/x-png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assets/css/theme.color.css">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/form.js" type="module"></script>
+
+
+    <script>
+        const nologin = () => {
+            const dominio = "http://127.0.0.1:5500/docs"
+            location.replace("../../")
+        }
+
+        if (!localStorage.getItem('inm-user')) {
+            nologin()
+        }else{
+            console.log("existe")
+        }
+
+        
+        const userData = JSON.parse(localStorage.getItem('inm-user'))
+
+        const precarga = async (user, pass) => {
+            try {
+                const user = "admin"
+                const pass = "admin"
+                // consulta a la bd
+                const query = ""
+                return true
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        const result = precarga(userData.user, userData.pass)
+
+        if (result != true) {
+            nologin()
+        }
+    </script>
+</head>
+
+<body class="bg-indigo text-black">
+    <div class="container p-0" style="background-color: #eee9e9;">
+        <form id="myform">
+            <div class="row mx-1 align-items-center">
+                <div class="col-4">
+                    <img class="img-fluid" src="../../assets/img/logo_horizontal.png" alt="">
+                </div>
+                <div class="col-4">
+                    <h2 class="px-3 py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+                </div>
+                <div class="col-4 text-end">
+                    <img class="" height="160px" src="../../assets/img/logo_Inamujer.png" alt="">
+                </div>
+            </div>
+            <h4 class="bg-indigo px-3 py-2 text-center">COORDINACIÓN ESTADAL</h4>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5>
+
+            <div class="row justify-content-center align-items-end py-3 mx-3">
+                <div class="col-4 mb-3 ">
+                    <label for="input1-1" class="form-label">Nombre(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input1-1" name="nombre">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input1-2" class="form-label">Apellido(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input1-2" name="apellido">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input1-3" class="form-label">Cédula de identidad:</label>
+                    <input type="text" class="form-control input-indigo" id="input1-3" name="cedula">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input1-4" class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control input-indigo" id="input1-4" name="telefono">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input1-5" class="form-label">Correo Electrónico:</label>
+                    <input type="text" class="form-control input-indigo" id="input1-5" name="correo">
+                </div>
+            </div>
+
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Ubicación Administrativa</h5>
+
+            <div class="row justify-content-center align-items-end py-3 mx-3">
+                <div class="col-4 mb-3 ">
+                    <label for="input2-1" class="form-label">Avenida o Calle:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-1" name="avenida_calle">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-2" class="form-label">Edificio, Casa o Sede:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-2" name="edifi_casa-sede">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-3" class="form-label">Nombre del Edificio, Casa o sede:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-3" name="nombre_edifi_casa-sede">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-4" class="form-label">Piso N°:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-4" name="num_piso">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-5" class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-5" name="telefono_infraestructura">
+                </div>
+                <div class="col-4 mb-3 ">
+                    <label for="input2-6" class="form-label">Estado:</label>
+                    <!-- <input type="text" class="form-control input-indigo" id="input2-6" name="estado_id"> -->
+                    <select class="form-select input-indigo" id="input2-6" name="estado_id,">
+                        <option value="CARACAS">CARACAS</option>
+                        <option value="ANZOATEGUI">ANZOATEGUI</option>
+                        <option value="APURE">APURE</option>
+                        <option value="ARAGUA">ARAGUA</option>
+                        <option value="BARINAS">BARINAS</option>
+                        <option value="BOLIVAR">BOLIVAR</option>
+                        <option value="CARABOBO">CARABOBO</option>
+                        <option value="COJEDES">COJEDES</option>
+                        <option value="FALCON">FALCON</option>
+                        <option value="GUARICO">GUARICO</option>
+                        <option value="LARA">LARA</option>
+                        <option value="MERIDA">MERIDA</option>
+                        <option value="MIRANDA">MIRANDA</option>
+                        <option value="MONAGAS">MONAGAS</option>
+                        <option value="NUEVA ESPARTA">NUEVA ESPARTA</option>
+                        <option value="PORTUGUESA">PORTUGUESA</option>
+                        <option value="SUCRE">SUCRE</option>
+                        <option value="TACHIRA">TACHIRA</option>
+                        <option value="TRUJILLO">TRUJILLO</option>
+                        <option value="YARACUY">YARACUY</option>
+                        <option value="ZULIA">ZULIA</option>
+                        <option value="AMAZONAS">AMAZONAS</option>
+                        <option value="DELTA AMACURO">DELTA AMACURO</option>
+                        <option value="VARGAS">VARGAS</option>
+                    </select>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-7" class="form-label">Municipio:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-7" name="municipio_id">
+                    <!-- <select class="form-select input-indigo" id="input2-7" name="municipio_id">
+                        <option selected>Seleccione</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select> -->
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-8" class="form-label">Ciudad:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-8" name="ciudad">
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-9" class="form-label">Parroquia:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-9" name="parroquia_id">
+                    <!-- <select class="form-select input-indigo" id="input2-9" name="parroquia_id">
+                        <option selected>Seleccione</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select> -->
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input2-10" class="form-label">Zona Postal:</label>
+                    <input type="text" class="form-control input-indigo" id="input2-10" name="zona_postal">
+                </div>
+            </div>
+
+            <!-- ----- DATOS Y CONDICIONES DE LA INFRAESTRUCTURA ----- -->
+            <h4 class="bg-indigo px-3 py-2 text-center">DATOS Y CONDICIONES DE LA INFRAESTRUCTURA</h4>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Infraestructura</h5>
+
+            <div class="row justify-content-center align-items-center py-3 mx-3">
+                <div class="col-12 row justify-content-center align-items-center">
+                    <div class="col-auto">
+                        <label for="input3-1" class="col-form-label">Sede</label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select input-indigo" id="input3-1" name="sede_id">
+                            <option value="Compartida">Compartida</option>
+                            <option value="INAMUJER">INAMUJER</option>
+                            <option value="CAFIM">CAFIM</option>
+                            <option value="Casa de abrigo">Casa de abrigo</option>
+                            <option value="UAIM">UAIM</option>
+                            <option value="Defensoria">Defensoria</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-2" name="propia">
+                    <label class="form-check-label" for="input3-2">PROPIA</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-2a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-2a" name="propia_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-3" name="alquilada">
+                    <label class="form-check-label" for="input3-3">ALQUILADA</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-3a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-3a" name="alquilada_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-4"
+                        name="apoyo_interinstitucional">
+                    <label class="form-check-label" for="input3-4">APOYO INTERISNTITUCIONAL</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-4a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-4a"
+                        name="apoyo_interinstitucional_dec">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-5" name="techos">
+                    <label class="form-check-label" for="input3-5">TECHOS</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-5a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-5a" name="techos_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-6" name="paredes">
+                    <label class="form-check-label" for="input3-6">PAREDES</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-6a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-6a" name="paredes_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input3-7" name="pisos">
+                    <label class="form-check-label" for="input3-7">PISOS</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input3-7a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input3-7a" name="pisos_desc">
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="input3-8" class="form-label">OTROS (Especifique):</label>
+                    <input type="text" class="form-control input-indigo" id="input3-8" name="otra_infraestructura">
+                </div>
+            </div>
+
+            <!-- ----- Servicios Publicos ----- -->
+            <h4 class="bg-indigo px-3 py-2 text-center">SERVICIOS PÚBLICOS</h4>
+
+            <div class="row justify-content-center align-items-center py-3 mx-3">
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input4-1" name="electricidad">
+                    <label class="form-check-label" for="input4-1">ELECTRICIDAD (Luz)</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input4-1a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input4-1a" name="electricidad_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input4-2" name="agua">
+                    <label class="form-check-label" for="input4-2">AGUA</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input4-2a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input4-2a" name="agua_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input4-3" name="telefonia">
+                    <label class="form-check-label" for="input4-3">TELÉFONO</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input4-3a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input4-3a" name="telefonia_desc">
+                </div>
+                <div class="form-check mb-1 col-2">
+                    <input class="form-check-input check-indigo" type="checkbox" id="input4-4" name="internet">
+                    <label class="form-check-label" for="input4-4">INTERNET</label>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for="input4-4a" class="form-label">Descripción de la condición:</label>
+                    <input type="text" class="form-control input-indigo" id="input4-4a" name="internet_desc">
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="input4-5" class="form-label">OTROS (Especifique):</label>
+                    <input type="text" class="form-control input-indigo" id="input4-5" name="otro_servicio_publico">
+                </div>
+            </div>
+
+            <!-- ----- BIENES NACIONALES ----- -->
+            <h4 class="bg-indigo px-3 py-2 text-center">BIENES NACIONALES</h4>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Bienes Nacionales</h5>
+
+            <div class="row py-3 mx-3">
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">01</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-1" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-1" name="num_bien1">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-1a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-1a" name="tipo_bien1">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">02</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-2" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-2" name="num_bien2">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-2a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-2a" name="tipo_bien2">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">03</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-3" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-3" name="num_bien3">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-3a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-3a" name="tipo_bien3">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">04</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-4" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-4" name="num_bien4">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-4a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-4a" name="tipo_bien4">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">05</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-5" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-5" name="num_bien5">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-5a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-5a" name="tipo_bien5">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">06</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-6" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-6" name="num_bien6">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-6a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-6a" name="tipo_bien6">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">07</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-7" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-7" name="num_bien7">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-7a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-7a" name="tipo_bien7">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">08</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-8" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-8" name="num_bien8">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-8a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-8a" name="tipo_bien8">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">09</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-9" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-9" name="num_bien9">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-9a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-9a" name="tipo_bien9">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">10</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-10" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-10" name="num_bien10">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-10a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-10a" name="tipo_bien10">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">11</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-11" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-11" name="num_bien11">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-11a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-11a" name="tipo_bien11">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">12</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-12" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-12" name="num_bien12">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-12a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-12a" name="tipo_bien12">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">13</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-13" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-13a" name="num_bien13">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-13" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-13a" name="tipo_bien13">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">14</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-14" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-14" name="num_bien14">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-14a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-14a" name="tipo_bien14">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">15</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-15" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-15" name="num_bien15">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-15a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-15a" name="tipo_bien15">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">16</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-16" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-16" name="num_bien16">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-16a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-16a" name="tipo_bien16">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">17</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-17" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-17" name="num_bien17">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-17a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-17a" name="tipo_bien17">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">18</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-18" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-18" name="num_bien18">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-18a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-18a" name="tipo_bien18">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">19</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-19" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-19" name="num_bien19">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-19a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-19a" name="tipo_bien19">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">20</h1>
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="input5-20" class="form-label">N° de bien:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-20" name="num_bien20">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="input5-20a" class="form-label">Tipo:</label>
+                        <input type="text" class="form-control input-indigo" id="input5-20a" name="tipo_bien20">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ----- VEHÍCULO ASIGNADO ----- -->
+            <h4 class="bg-indigo px-3 py-2 text-center">VEHÍCULO ASIGNADO</h4>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Automóvil</h5>
+
+            <div class="py-3 mx-3">
+                <div class="row justify-content-center align-items-center">
+                    <div class="form-check mb-1 col-2">
+                        <input class="form-check-input check-indigo" type="checkbox" id="input27" name="automovil">
+                        <label class="form-check-label" for="input27">
+                            AUTOMÓVIL
+                        </label>
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Cantidad N°:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="cant_auto">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">1</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_auto1">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_auto1">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_auto1"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">2</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_auto2">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_auto2">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_auto2"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">3</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_auto3">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_auto3">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_auto3"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">4</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_auto4">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_auto4">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_auto4"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">5</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_auto5">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_auto5">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_auto5"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <hr> -->
+
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Autobus</h5>
+
+            <div class="py-3 mx-3">
+                <div class="row justify-content-center align-items-center">
+                    <div class="form-check mb-1 col-2">
+                        <input class="form-check-input check-indigo" type="checkbox" id="input27" name="autobus">
+                        <label class="form-check-label" for="input27">
+                            AUTOBUS
+                        </label>
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Cantidad N°:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="cant_bus">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">1</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_bus1">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_bus1">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_bus1"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">2</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_bus2">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_bus2">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_bus2"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">3</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_bus3">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_bus3">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_bus3"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">4</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_bus4">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_bus4">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_bus4"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center pt-3">
+                    <div class="col-1 text-center align-self-center px-1">
+                        <h1 class="text-indigo">5</h1>
+                    </div>
+                    <div class="col-2 mb-3">
+                        <label for="input27" class="form-label">N° de Placa:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="num_placa_bus5">
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="input27" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control input-indigo" id="input27" name="modelo_bus5">
+                    </div>
+                    <div class="col-6 mb-1">
+                        <label for="input27" class="form-label">Condiciones:</label>
+                        <textarea class="form-control input-indigo" id="input27" name="condiciones_bus5"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row justify-content-center pb-3 mx-3">
+                <div class="col-2 mb-3">
+                    <label for="input27" class="form-label">OTROS (Especifique):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="otros">
+                </div>
+                <div class="col-2 mb-3">
+                    <label for="input27" class="form-label">Cantidad N°:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cant_otro">
+                </div>
+                <div class="col-2 mb-3">
+                    <label for="input27" class="form-label">N° de Placa:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="num_placa_otro">
+                </div>
+                <div class="col-2 mb-3">
+                    <label for="input27" class="form-label">Modelo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="modelo_otro">
+                </div>
+                <div class="col-4 mb-1">
+                    <label for="input27" class="form-label">Condiciones:</label>
+                    <textarea class="form-control input-indigo" id="input27" name="condiciones_otro"
+                        rows="3"></textarea>
+                </div>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">TALENTO HUMANO</h4>
+
+            <div class="row justify-content-center pt-3 mx-3">
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cantidad de mujeres:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cant_mujeres">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Mujeres activas:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_activas">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Mujeres de reposo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_reposo">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Mujeres en vacaciones:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_vacaciones">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row justify-content-center py-3 mx-3">
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cantidad de hombres:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cant_hombres">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Hombres activos:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_activos">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Hombres de reposo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_reposo">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Hombres en vacaciones:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_vacaciones">
+                </div>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">EQUIPOS MÉDICOS</h4>
+
+            <div class="row py-3 mx-3">
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">01</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico1">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">02</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico2">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">03</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico3">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">04</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico4">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">05</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico5">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">06</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico6">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">07</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico7">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">08</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico8">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">09</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico9">
+                </div>
+                <div class="col-2 text-center align-self-center px-1">
+                    <h3 class="text-indigo">10</h3>
+                </div>
+                <div class="col-10 mb-3">
+                    <input type="text" class="form-control input-indigo" id="input22" name="equipo_medico10">
+                </div>
+
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">OBSERVACIÓN</h4>
+
+            <div class="py-3 mx-3">
+                <!-- <label for="input27" class="form-label">Condiciones:</label> -->
+                <textarea class="form-control input-indigo" id="input27" name="observacion" rows="5"></textarea>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">RECOMENDACIONES</h4>
+
+            <div class="py-3 mx-3">
+                <!-- <label for="input27" class="form-label">Condiciones:</label> -->
+                <textarea class="form-control input-indigo" id="input27" name="recomendaciones" rows="5"></textarea>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">TESTIGO N° 1</h4>
+            <div class="row justify-content-center py-3 mx-3">
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Nombre(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="nombre_testigo1">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Apellido(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="apellido_testigo1">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cédula:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cedula_testigo1">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cargo_testigo1">
+                </div>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">TESTIGO N° 2</h4>
+            <div class="row justify-content-center py-3 mx-3">
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Nombre(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="nombre_testigo2">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Apellido(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="apellido_testigo2">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cédula:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cedula_testigo2">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cargo_testigo2">
+                </div>
+            </div>
+
+            <h4 class="bg-indigo px-3 py-2 text-center">ENLACE INAMUJER</h4>
+            <div class="row justify-content-center py-3 mx-3">
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Nombre(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="nombre_enlace_inm">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Apellido(s):</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="apellido_enlace_inm">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cédula:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cedula_enlace_inm">
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="input27" class="form-label">Cargo:</label>
+                    <input type="text" class="form-control input-indigo" id="input27" name="cargo_enlace_inm">
+                </div>
+            </div>
+
+            <div class="p-3 d-flex justify-content-end">
+                <button type="submit" class="btn btn-indigo continue"><i class="bi-check-lg"></i> Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+</html>

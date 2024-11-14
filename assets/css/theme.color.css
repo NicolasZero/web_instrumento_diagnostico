@@ -1,0 +1,47 @@
+.btn-indigo {
+    background-color: #7030a0;
+    color: #fff;
+}
+
+.btn-indigo:hover {
+    background-color: #431c61;
+    color: #fff;
+}
+
+.text-indigo{
+    color: #7030a0;
+}
+
+.bg-indigo {
+    background-color: #7030a0;
+    color: #fff;
+}
+
+.check-indigo{
+    background-color: #875fa5;
+}
+
+.check-indigo:checked {
+    background-color: #7030a0;
+    border-color: #7030a0;
+}
+
+.check-indigo:focus{
+    border-color:#431c61;
+    outline:0;
+    box-shadow:0 0 0 .25rem #875fa5
+}
+
+.input-indigo{
+    border-color: #7030a0;
+}
+
+.input-indigo:focus {
+    border-color:#431c61;
+    outline:0;
+    box-shadow:0 0 0 .25rem #875fa5
+}
+
+.border-indigo{
+    border-color: #7030a0;
+}

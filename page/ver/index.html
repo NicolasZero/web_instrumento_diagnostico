@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="es" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumento de Diagnostico</title>
+    <!-- icon -->
+    <link rel="icon" href="../../assets/img/logo_Inamujer.png" type="image/x-png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assets/css/theme.color.css">
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <!-- <script src="../../assets/js/form.js" type="module"></script> -->
+
+    <link href="../../assets/css/datatables.min.css" rel="stylesheet">
+
+    <script src="../../assets/js/datatables.min.js"></script>
+
+    <script>
+        const nologin = () => {
+            const dominio = "http://127.0.0.1:5500/docs"
+            location.replace("../../")
+        }
+
+        if (!localStorage.getItem('inm-user')) {
+            nologin()
+        }else{
+            console.log("existe")
+        }
+
+        const userData = JSON.parse(localStorage.getItem('inm-user'))
+
+        const precarga = async (user, pass) => {
+            try {
+                const user = "admin"
+                const pass = "admin"
+                // consulta a la bd
+                const query = ""
+                return true
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        const result = precarga(userData.user, userData.pass)
+
+        if (result != true) {
+            nologin()
+        }
+    </script>
+</head>
+
+<body class="bg-indigo text-black" onload="load()">
+    <div class="container p-0" style="background-color: #eee9e9;">
+        <div class="row mx-1 align-items-center">
+            <div class="col-4">
+                <img class="img-fluid" src="../../assets/img/logo_horizontal.png" alt="">
+            </div>
+            <div class="col-4">
+                <h2 class="px-3 py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+            </div>
+            <div class="col-4 text-end">
+                <img class="" height="160px" src="../../assets/img/logo_Inamujer.png" alt="">
+            </div>
+        </div>
+
+        <h4 class="bg-indigo px-3 py-2 text-center">Tabla de registros</h4>
+        <!-- <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5> -->
+
+        <div class="row mx-3 py-3">
+            <table id="example" class="table table-hover">
+            </table>
+        </div>
+
+
+        <script>
+            const load = () => {
+                sendForm()
+            }
+
+            const sendForm = async () => {
+                try {
+                    const response = await fetch('http://localhost:3000/registro/', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    });
+                    const json = await response.json();
+                    const data = json.data
+                    // console.log(JSON.stringify(json));
+                    console.log(data)
+                    $('#example').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'nombre' ,
+                                title: 'nombre'
+                            },
+                            { data: 'apellido' ,
+                                title: 'apellido'
+                            },
+                            { data: 'estado_id' ,
+                                title: 'estado_id'
+                            },
+                            { data: 'sede_id',
+                                title: 'sede_id'
+                            },
+                            {
+                                title: 'accion'
+                            }
+                        ],
+                        columnDefs: [
+                            { targets: 3, visible: false },
+                            {
+                                targets: -1,
+                                orderable: false,
+                                data: null,
+                                render: function (data, type, row, meta) {
+                                    let fila = meta.row;
+                                    let botones = `
+                        <button class='btn btn-primary btn-circle'
+                            onclick='toggle("#div_misAcciones"); return false;'>
+                            <i class="bi bi-list-ul"></i>
+                        </button>`;
+                                    return botones;
+                                }
+                            }
+                        ],
+                        "bDestroy": true
+                    });
+                }
+                catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+
+
+
+            // const data = [
+            //     {
+            //         "name": "Tiger Nixon",
+            //         "position": "System Architect",
+            //         "salary": "$3,120",
+            //         "start_date": "2011/04/25",
+            //         "office": "Edinburgh",
+            //         "extn": "5421"
+            //     },
+            //     {
+            //         "name": "Garrett Winters",
+            //         "position": "Director",
+            //         "salary": "$5,300",
+            //         "start_date": "2011/07/25",
+            //         "office": "Edinburgh",
+            //         "extn": "8422"
+            //     },
+            //     {
+            //         "name": "Tiger Nixon",
+            //         "position": "System Architect",
+            //         "salary": "$3,120",
+            //         "start_date": "2011/04/25",
+            //         "office": "Edinburgh",
+            //         "extn": "5421"
+            //     },
+            //     {
+            //         "name": "Garrett Winters",
+            //         "position": "Director",
+            //         "salary": "$5,300",
+            //         "start_date": "2011/07/25",
+            //         "office": "Edinburgh",
+            //         "extn": "8422"
+            //     },
+            //     {
+            //         "name": "Tiger Nixon",
+            //         "position": "System Architect",
+            //         "salary": "$3,120",
+            //         "start_date": "2011/04/25",
+            //         "office": "Edinburgh",
+            //         "extn": "5421"
+            //     },
+            //     {
+            //         "name": "Garrett Winters",
+            //         "position": "Director",
+            //         "salary": "$5,300",
+            //         "start_date": "2011/07/25",
+            //         "office": "Edinburgh",
+            //         "extn": "8422"
+            //     }
+            // ]
+
+
+        </script>
+    </div>
+</body>
+
+
+</html>
