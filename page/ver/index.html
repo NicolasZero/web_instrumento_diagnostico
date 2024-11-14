@@ -32,7 +32,7 @@
 
         if (!localStorage.getItem('inm-user')) {
             nologin()
-        }else{
+        } else {
             console.log("existe")
         }
 
@@ -61,15 +61,16 @@
 
 <body class="bg-indigo text-black" onload="load()">
     <div class="container p-0" style="background-color: #eee9e9;">
-        <div class="row mx-1 align-items-center">
-            <div class="col-4">
-                <img class="img-fluid" src="../../assets/img/logo_horizontal.png" alt="">
+        <div class="row m-0 p-0 align-items-center" style="height: 200px;background-color: #eee9e9;">
+            <div class="col-3">
+                <img class="img-fluid" src="./assets/img/logo_horizontal.png" alt="">
             </div>
-            <div class="col-4">
-                <h2 class="px-3 py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+            <div class="col-6">
+                <h2 class="py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
             </div>
-            <div class="col-4 text-end">
-                <img class="" height="160px" src="../../assets/img/logo_Inamujer.png" alt="">
+            <div class="col-3 text-end my-auto">
+                <img class="rounded" style="max-height: 190px; width: auto; max-width: 100%;"
+                    src="./assets/img/logo_Inamujer.png" />
             </div>
         </div>
 
@@ -84,10 +85,10 @@
 
         <script>
             const load = () => {
-                sendForm()
+                getData()
             }
 
-            const sendForm = async () => {
+            const getData = async () => {
                 try {
                     const response = await fetch('http://localhost:3000/registro/', {
                         method: 'GET',
@@ -102,16 +103,20 @@
                     $('#example').DataTable({
                         data: data,
                         columns: [
-                            { data: 'nombre' ,
+                            {
+                                data: 'nombre',
                                 title: 'nombre'
                             },
-                            { data: 'apellido' ,
+                            {
+                                data: 'apellido',
                                 title: 'apellido'
                             },
-                            { data: 'estado_id' ,
+                            {
+                                data: 'estado_id',
                                 title: 'estado_id'
                             },
-                            { data: 'sede_id',
+                            {
+                                data: 'sede_id',
                                 title: 'sede_id'
                             },
                             {
