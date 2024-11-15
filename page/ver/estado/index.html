@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="es" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumento de Diagnostico</title>
+    <!-- icon -->
+    <link rel="icon" href="../../../assets/img/logo_Inamujer.png" type="image/x-png">
+
+    <!-- loader -->
+    <link rel="stylesheet" href="../../../assets/css/loader.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../../assets/css/theme.color.css">
+    <!-- datatables -->
+    <link href="../../../assets/css/datatables.min.css" rel="stylesheet">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.0/css/buttons.dataTables.css">
+
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../../assets/js/bootstrap.min.js"></script>
+    <script src="../../../assets/js/jquery.min.js"></script>
+    <!-- datatables -->
+    <script src="../../../assets/js/datatables.min.js"></script>
+    <!-- <script src="../../../assets/js/dataTables.buttons.js"></script> -->
+    <!-- <script src="../../../assets/js/buttons.dataTables.js"></script> -->
+
+
+    <script src="https://cdn.datatables.net/buttons/3.2.0/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+
+
+    <script>
+        const nologin = () => {
+            // const dominio = "http://127.0.0.1:5500/docs"
+            location.replace("../../../")
+        }
+
+        if (!localStorage.getItem('inm-user')) {
+            nologin()
+        } else {
+            $(window).on('load', function () {
+                $(".loader-page").css({ visibility: "hidden", opacity: "0" })
+            });
+        }
+    </script>
+</head>
+
+<body class="bg-indigo text-black">
+    <div class="loader-page"></div>
+
+    <div class="container p-0" style="background-color: #eee9e9;">
+        <div class="row m-0 p-0 align-items-center" style="height: 200px;background-color: #eee9e9;">
+            <div class="col-3">
+                <img class="img-fluid" src="../../../assets/img/logo_horizontal.png" alt="">
+            </div>
+            <div class="col-6">
+                <h2 class="py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+            </div>
+            <div class="col-3 text-end my-auto">
+                <img class="rounded" style="max-height: 190px; width: auto; max-width: 100%;"
+                    src="../../../assets/img/logo_Inamujer.png" />
+            </div>
+        </div>
+        <div class="bg-black text-white px-3 py-1 d-flex justify-content-between">
+            <div>
+                <a href="../registro"
+                    class="icon-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    <i class="bi bi-ui-checks"></i>
+                    Registro
+                </a>
+            </div>
+            <div>
+                <a href="../cerrar" class="icon-link icon-link-hover link-secondary">
+                    Cerrar Sesión
+                    <i class="bi bi-arrow-right"></i>
+                    <!-- <i class="bi bi-door-closed"></i> -->
+                </a>
+            </div>
+        </div>
+
+        <h4 class="bg-indigo px-3 py-2 text-center">Tabla de registros</h4>
+        <!-- <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5> -->
+
+        <div class="row mx-3 py-3">
+            <table id="example" class="table table-hover">
+            </table>
+        </div>
+
+    </div>
+
+    <!-- <script src="../../../assets/js/controller.ver.js" type="module"></script> -->
+
+    <script type="module">
+        import { pepe, hola } from "../../../assets/js/prueba.js";
+        import { getData } from "../../../assets/js/controller.ver.js";
+
+        $(window).on('load', function () {
+            getData()
+        });
+
+        // pepe()
+        const load = () => {
+            // getData()
+        }
+        
+    </script>
+</body>
+
+</html>

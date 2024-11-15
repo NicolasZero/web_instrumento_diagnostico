@@ -18,17 +18,10 @@ export const generatePdf = async (id) => {
             console.log(data);
             handleExportPDF(data);
         }
-
-
     }
     catch (error) {
         console.error('Error:', error);
     }
-}
-
-const dino = () => {
-    console.log("dino");
-    
 }
 
 export const getData = async () => {
