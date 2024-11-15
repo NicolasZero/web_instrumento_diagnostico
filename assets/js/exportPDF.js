@@ -196,7 +196,7 @@ function convertNumbersToStrings(obj) {
         }
         doc.text(`${label}:`, 20, yPosition, { maxWidth: maxWidthHeading });
         doc.rect(80, yPosition - inputHeight + 2, inputWidth, inputHeight); // Draw input box
-        doc.text(value, 90, yPosition, { maxWidth: maxWidthHeading }); // Draw value inside input box
+        doc.text(value, 82, yPosition, { maxWidth: maxWidthHeading }); // Draw value inside input box
         yPosition += lineHeight + inputHeight; // Move down for the next line
     });
 
@@ -293,7 +293,7 @@ function convertNumbersToStrings(obj) {
         doc.text(`${label}:`, 10, yPosition + 15, { maxWidth: maxWidthHeading });
         if (expand) {
             doc.rect(80, yPosition - inputHeight + 15, inputWidthDesc, inputHeightDesc);
-            doc.text(String(value), 82, yPosition + 11, { maxWidth: 120 });
+            doc.text(String(value), 82, yPosition + 12, { maxWidth: 120 });
         }
         if (!expand) {
             if (checkbox && value !== "") {
@@ -347,7 +347,7 @@ function convertNumbersToStrings(obj) {
         doc.text(`${label}:`, 10, yPosition + 15, { maxWidth: maxWidthHeading });
         if (expand) {
             doc.rect(80, yPosition - inputHeight + 15, inputWidthDesc, inputHeightDesc);
-            doc.text(String(value), 82, yPosition + 11, { maxWidth: 120 });
+            doc.text(String(value), 82, yPosition + 12, { maxWidth: 120 });
         }
         if (!expand) {
             if (checkbox && value !== "") {
