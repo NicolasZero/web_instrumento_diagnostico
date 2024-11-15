@@ -17,11 +17,22 @@
 
 
     <!-- JS -->
+    <script></script>
     <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/controller.login.js"></script>
 
+    <script>
+        if (localStorage.getItem('inm-user')) {
+            location.href = './page/registro'
+        } else {
+            $(window).on('load', function () {
+                $(".loader-page").css({ visibility: "hidden", opacity: "0" })
+            });
+        }
+
+    </script>
 </head>
 
 <body class="bg-indigo text-black">
@@ -44,7 +55,7 @@
 
         <div class="mx-auto mt-5 py-2 pb-5" style="min-width: 300px; width: 50%;background-color: #eee9e9;">
             <h5 class="bg-secondary text-white px-3 py-1 text-center">Inicio de sesión</h5>
-
+            <div id="alert" class="alert alert-danger text-center fs-5 d-none" role="alert"></div>
             <div class="d-flex flex-column px-5">
 
                 <div class="mb-4">
@@ -54,23 +65,21 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control input-indigo" id="password">
+                    <label for="pass" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control input-indigo" id="pass">
                 </div>
 
                 <div class="mb-4 form-check">
-                    <input type="checkbox" class="form-check-input check-indigo" id="check">
+                    <input type="checkbox" class="form-check-input check-indigo" id="check" value="hola">
                     <label class="form-check-label" for="check">Mantener sesión activa</label>
                 </div>
 
-                <button id="submit" type="button" class="btn btn-indigo">Ingresar</button>
+                <button type="button" onclick="verification()" class="btn btn-indigo">Ingresar</button>
             </div>
         </div>
-
-
     </div>
-    <script src="./assets/js/controller.login.js"></script>
 
+    <!-- <script src="./assets/js/loader.js"></script> -->
 </body>
 
 </html>
