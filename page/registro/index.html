@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../assets/css/theme.color.css">
+    <link rel="stylesheet" href="../../assets/css/tooltip.css">
 
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -78,55 +79,65 @@
             <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5>
 
             <div class="row justify-content-center align-items-end py-3 mx-3">
-                <div class="col-lg-4 mb-3 ">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input1-1" class="form-label">Nombre(s):</label>
-                    <input type="text" class="form-control input-indigo" id="input1-1" name="nombre">
+                    <input type="text" class="form-control input-indigo" id="input1-1" name="nombre" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input1-2" class="form-label">Apellido(s):</label>
-                    <input type="text" class="form-control input-indigo" id="input1-2" name="apellido">
+                    <input type="text" class="form-control input-indigo" id="input1-2" name="apellido" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input1-3" class="form-label">Cédula de identidad:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-3" name="cedula">
+                    <input type="text" class="form-control input-indigo" id="input1-3" name="cedula" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-6 mb-3">
+                <div class="col-lg-6 mb-3 tooltip-custom">
                     <label for="input1-4" class="form-label">Teléfono:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-4" name="telefono">
+                    <input type="text" class="form-control input-indigo" id="input1-4" name="telefono" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-6 mb-3">
+                <div class="col-lg-6 mb-3 tooltip-custom">
                     <label for="input1-5" class="form-label">Correo Electrónico:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-5" name="correo">
+                    <input type="text" class="form-control input-indigo" id="input1-5" name="correo" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
             </div>
 
             <h5 class="bg-secondary text-white px-3 py-1 text-center">Ubicación Administrativa</h5>
 
             <div class="row justify-content-center align-items-end py-3 mx-3">
-                <div class="col-lg-4 mb-3 ">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-1" class="form-label">Avenida o Calle:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-1" name="avenida_calle">
+                    <input type="text" class="form-control input-indigo" id="input2-1" name="avenida_calle" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-2" class="form-label">Edificio, Casa o Sede:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-2" name="edifi_casa_sede">
+                    <input type="text" class="form-control input-indigo" id="input2-2" name="edifi_casa_sede" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-3" class="form-label">Nombre del Edificio, Casa o sede:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-3" name="nombre_edifi_casa_sede">
+                    <input type="text" class="form-control input-indigo" id="input2-3" name="nombre_edifi_casa_sede" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-4" class="form-label">Piso N°:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-4" name="num_piso">
+                    <input type="text" class="form-control input-indigo" pattern="^[0-9]\d*$"  id="input2-4" name="num_piso" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-5" class="form-label">Teléfono:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-5" name="telefono_infraestructura">
+                    <input type="text" class="form-control input-indigo" id="input2-5" pattern="^(0414|0424|0416|0426|0412|0212)\d{7}$" name="telefono_infraestructura" required>
+                    <span class="tooltip-text">Campo requerido e ingrese un telefono válido</span>
                 </div>
-                <div class="col-lg-4 mb-3 ">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-6" class="form-label">Estado:</label>
                     <!-- <input type="text" class="form-control input-indigo" id="input2-6" name="estado_id"> -->
-                    <select class="form-select input-indigo" id="input2-6" name="estado_id">
+                    <select class="form-select input-indigo" id="input2-6" name="estado_id" required>
                         <option selected value="">Seleccione</option>
                         <option value="CARACAS">CARACAS</option>
                         <option value="ANZOATEGUI">ANZOATEGUI</option>
@@ -153,10 +164,12 @@
                         <option value="DELTA AMACURO">DELTA AMACURO</option>
                         <option value="VARGAS">VARGAS</option>
                     </select>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-7" class="form-label">Municipio:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-7" name="municipio_id">
+                    <input type="text" class="form-control input-indigo" id="input2-7" name="municipio_id" required>
+                    <span class="tooltip-text">Campo requerido</span>
                     <!-- <select class="form-select input-indigo" id="input2-7" name="municipio_id">
                         <option selected>Seleccione</option>
                         <option value="1">One</option>
@@ -164,13 +177,15 @@
                         <option value="3">Three</option>
                     </select> -->
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-8" class="form-label">Ciudad:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-8" name="ciudad">
+                    <input type="text" class="form-control input-indigo" id="input2-8" name="ciudad" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
-                <div class="col-lg-4 mb-3">
+                <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-9" class="form-label">Parroquia:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-9" name="parroquia_id">
+                    <input type="text" class="form-control input-indigo" id="input2-9" name="parroquia_id" required>
+                    <span class="tooltip-text">Campo requerido</span>
                     <!-- <select class="form-select input-indigo" id="input2-9" name="parroquia_id">
                         <option selected>Seleccione</option>
                         <option value="1">One</option>
@@ -178,9 +193,10 @@
                         <option value="3">Three</option>
                     </select> -->
                 </div>
-                <div class="col-lg-12 mb-3">
+                <div class="col-lg-12 mb-3 tooltip-custom">
                     <label for="input2-10" class="form-label">Zona Postal:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-10" name="zona_postal">
+                    <input type="text" class="form-control input-indigo" id="input2-10" name="zona_postal" required>
+                    <span class="tooltip-text">Campo requerido</span>
                 </div>
             </div>
 
@@ -593,9 +609,10 @@
                             AUTOMÓVIL
                         </label>
                     </div>
-                    <div class="col-xs-6 col-lg-3 mb-3 mt-2">
+                    <div class="col-xs-6 col-lg-3 mb-3 mt-2 tooltip-custom">
                         <label for="cant_auto" class="form-label">Cantidad N°:</label>
-                        <input type="text" class="form-control input-indigo" id="cant_auto" name="cant_auto">
+                        <input type="text" class="form-control input-indigo" pattern="^[0-9]\d*$"  id="cant_auto" name="cant_auto">
+                        <span class="tooltip-text">Solo se permiten números</span>
                     </div>
                 </div>
 
@@ -707,9 +724,10 @@
                             AUTOBUS
                         </label>
                     </div>
-                    <div class="col-xs-6 col-lg-3 mb-3 mt-2">
+                    <div class="col-xs-6 col-lg-3 mb-3 mt-2 tooltip-custom">
                         <label for="cant_bus" class="form-label">Cantidad N°:</label>
-                        <input type="text" class="form-control input-indigo" id="cant_bus" name="cant_bus">
+                        <input type="text" class="form-control input-indigo" pattern="^[0-9]\d*$"  id="cant_bus" name="cant_bus">
+                        <span class="tooltip-text">Solo se permiten números</span>
                     </div>
                 </div>
 
@@ -816,9 +834,10 @@
                     <label for="input27" class="form-label">OTROS (Especifique):</label>
                     <input type="text" class="form-control input-indigo" id="input27" name="otros">
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Cantidad N°:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="cant_otro">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="cant_otro">
+                    <span class="tooltip-text">Solo se permiten números</span>
                 </div>
                 <div class="mb-3 col-lg-3">
                     <label for="input27" class="form-label">N° de Placa:</label>
@@ -838,42 +857,50 @@
             <h4 class="bg-indigo px-3 py-2 text-center">TALENTO HUMANO</h4>
 
             <div class="row justify-content-center pt-3 mx-3">
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Cantidad de mujeres:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="cant_mujeres">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="cant_mujeres" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Mujeres activas:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_activas">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="mujeres_activas" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Mujeres de reposo:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_reposo">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="mujeres_reposo" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Mujeres en vacaciones:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="mujeres_vacaciones">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="mujeres_vacaciones" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
             </div>
 
             <hr>
 
             <div class="row justify-content-center py-3 mx-3">
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Cantidad de hombres:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="cant_hombres">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$" name="cant_hombres" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Hombres activos:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_activos">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="hombres_activos" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Hombres de reposo:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_reposo">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="hombres_reposo" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
-                <div class="mb-3 col-lg-3">
+                <div class="mb-3 col-lg-3 tooltip-custom">
                     <label for="input27" class="form-label">Hombres en vacaciones:</label>
-                    <input type="text" class="form-control input-indigo" id="input27" name="hombres_vacaciones">
+                    <input type="text" class="form-control input-indigo" id="input27" pattern="^[0-9]\d*$"  name="hombres_vacaciones" required>
+                    <span class="tooltip-text">Campo requerido y solo números</span>
                 </div>
             </div>
 
@@ -1024,6 +1051,7 @@
             </div>
         </form>
     </div>
+    <script src="../../assets/js/tooltip.js"></script>
 </body>
 
 
