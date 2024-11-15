@@ -1,28 +1,40 @@
-$("#submit").click(function (e) { 
-    e.preventDefault();
+const verification = async () => {
+    try {
+        const user = $("#user").val()
+        const pass = $("#pass").val()
+        const check = document.getElementById("check").checked
 
-    const user = $("#user").val()
-    const pass = $("#pass").val()
-    const check = document.getElementById("check").checked
+        const response = await fetch('http://localhost:3000/auth/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user, pass, "key": "n1c0145" }),
+        });
 
-    console.log({user,pass,check})
+        const res = await response.json();
+        if (res.data) {
+            $("#alert").removeClass('alert-danger');
+            $("#alert").addClass('alert-success');
+            $("#alert").html('Iniciando sesión...');
+            $("#alert").removeClass('d-none');
+            location.href = './page/registro'
 
-    const verification = async (user,pass) => {
-        try {
-            const response = await fetch('http://localhost:3000/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: {user,pass},
-            });
+            localStorage.setItem('inm-user', JSON.stringify({ user, pass, check }))
+        } else {
+            $("#alert").removeClass('alert-success');
+            $("#alert").addClass('alert-danger');
+            $("#alert").html(res.error);
+            $("#alert").removeClass('d-none');
 
-            const res = await response.json();
-            // const data = res.data
-            console.log(res);
-            
-        }catch (error) {
-            console.error('Error:', error);
+            setTimeout(() => {
+                $("#alert").addClass('d-none');
+            }, 3000);
+            // console.log(res);
         }
+        // const data = res.data
+
+    } catch (error) {
+        console.error('Error:', error);
     }
-});
+}

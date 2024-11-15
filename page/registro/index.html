@@ -9,6 +9,9 @@
     <!-- icon -->
     <link rel="icon" href="../../assets/img/logo_Inamujer.png" type="image/x-png">
 
+    <!-- loader -->
+    <link rel="stylesheet" href="../../assets/css/loader.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/icons/font/bootstrap-icons.min.css">
@@ -24,53 +27,53 @@
     <script>
         const nologin = () => {
             // const dominio = "http://127.0.0.1:5500/docs"
-            // location.replace("../../")
+            location.replace("../../")
         }
 
         if (!localStorage.getItem('inm-user')) {
             nologin()
-        }else{
-            console.log("existe")
-        }
-
-        
-        const userData = JSON.parse(localStorage.getItem('inm-user'))
-
-        const precarga = async (user, pass) => {
-            try {
-                const user = "admin"
-                const pass = "admin"
-                // consulta a la bd
-                const query = ""
-                return true
-
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-        const result = precarga(userData.user, userData.pass)
-
-        if (result != true) {
-            nologin()
+        } else {
+            $(window).on('load', function () {
+                $(".loader-page").css({ visibility: "hidden", opacity: "0" })
+            });
         }
     </script>
 </head>
 
 <body class="bg-indigo text-black">
+    <div class="loader-page"></div>
+
     <div class="container p-0" style="background-color: #eee9e9;">
         <form id="myform">
-            <div class="row mx-1 align-items-center">
-                <div class="col-4">
+            <div class="row m-0 p-0 align-items-center" style="height: 200px;background-color: #eee9e9;">
+                <div class="col-3">
                     <img class="img-fluid" src="../../assets/img/logo_horizontal.png" alt="">
                 </div>
-                <div class="col-4">
-                    <h2 class="px-3 py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
+                <div class="col-6">
+                    <h2 class="py-5 text-center">INSTRUMENTO DE DIAGNÓSTICO</h2>
                 </div>
-                <div class="col-4 text-end">
-                    <img class="" height="160px" src="../../assets/img/logo_Inamujer.png" alt="">
+                <div class="col-3 text-end my-auto">
+                    <img class="rounded" style="max-height: 190px; width: auto; max-width: 100%;"
+                        src="../../assets/img/logo_Inamujer.png" />
                 </div>
             </div>
+            <!-- navbar -->
+            <div class="bg-black text-white px-3 py-1 d-flex justify-content-between">
+                <div>
+                    <a href="../ver" class="icon-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                        <i class="bi bi-table"></i>
+                        Tablas
+                    </a>
+                </div>
+                <div>
+                    <a href="../cerrar" class="icon-link icon-link-hover link-secondary">
+                        Cerrar Sesión
+                        <i class="bi bi-arrow-right"></i>
+                        <!-- <i class="bi bi-door-closed"></i> -->
+                    </a>
+                </div>
+            </div>
+
             <h4 class="bg-indigo px-3 py-2 text-center">COORDINACIÓN ESTADAL</h4>
             <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5>
 
@@ -208,7 +211,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input3-2a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-2a" name="propia_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-2a"
+                        name="propia_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input3-3" name="alquilada">
@@ -216,7 +220,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input3-3a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-3a" name="alquilada_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-3a"
+                        name="alquilada_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input3-4"
@@ -234,7 +239,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input3-5a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-5a" name="techos_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-5a"
+                        name="techos_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input3-6" name="paredes">
@@ -242,7 +248,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input3-6a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-6a" name="paredes_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-6a"
+                        name="paredes_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input3-7" name="pisos">
@@ -250,11 +257,13 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input3-7a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-7a" name="pisos_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-7a"
+                        name="pisos_desc">
                 </div>
                 <div class="col-12 mb-3">
                     <label for="input3-8" class="form-label">OTROS (Especifique):</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-8" name="otra_infraestructura">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input3-8"
+                        name="otra_infraestructura">
                 </div>
             </div>
 
@@ -268,7 +277,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input4-1a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-1a" name="electricidad_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-1a"
+                        name="electricidad_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input4-2" name="agua">
@@ -276,7 +286,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input4-2a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-2a" name="agua_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-2a"
+                        name="agua_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input4-3" name="telefonia">
@@ -284,7 +295,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input4-3a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-3a" name="telefonia_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-3a"
+                        name="telefonia_desc">
                 </div>
                 <div class="form-check mb-1 col-2">
                     <input class="form-check-input check-indigo" type="checkbox" id="input4-4" name="internet">
@@ -292,11 +304,13 @@
                 </div>
                 <div class="col-4 mb-3">
                     <label for="input4-4a" class="form-label">Descripción de la condición:</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-4a" name="internet_desc">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-4a"
+                        name="internet_desc">
                 </div>
                 <div class="col-12 mb-3">
                     <label for="input4-5" class="form-label">OTROS (Especifique):</label>
-                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-5" name="otro_servicio_publico">
+                    <input type="text" maxlength="150" class="form-control input-indigo" id="input4-5"
+                        name="otro_servicio_publico">
                 </div>
             </div>
 
@@ -574,14 +588,14 @@
             <div class="py-3 mx-3">
                 <div class="row justify-content-center align-items-center">
                     <div class="form-check mb-1 col-2">
-                        <input class="form-check-input check-indigo" type="checkbox" id="input27" name="automovil">
-                        <label class="form-check-label" for="input27">
+                        <input class="form-check-input check-indigo" type="checkbox" id="automovil" name="automovil">
+                        <label class="form-check-label" for="automovil">
                             AUTOMÓVIL
                         </label>
                     </div>
                     <div class="col-3 mb-3">
-                        <label for="input27" class="form-label">Cantidad N°:</label>
-                        <input type="text" class="form-control input-indigo" id="input27" name="cant_auto">
+                        <label for="cant_auto" class="form-label">Cantidad N°:</label>
+                        <input type="text" class="form-control input-indigo" id="cant_auto" name="cant_auto">
                     </div>
                 </div>
 
@@ -599,8 +613,8 @@
                     </div>
                     <div class="col-6 mb-1">
                         <label for="input27" class="form-label">Condiciones:</label>
-                        <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_auto1"
-                            rows="2"></textarea>
+                        <textarea class="form-control input-indigo" maxlength="250" id="input27"
+                            name="condiciones_auto1" rows="2"></textarea>
                     </div>
                 </div>
 
@@ -618,8 +632,8 @@
                     </div>
                     <div class="col-6 mb-1">
                         <label for="input27" class="form-label">Condiciones:</label>
-                        <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_auto2"
-                            rows="2"></textarea>
+                        <textarea class="form-control input-indigo" maxlength="250" id="input27"
+                            name="condiciones_auto2" rows="2"></textarea>
                     </div>
                 </div>
 
@@ -637,8 +651,8 @@
                     </div>
                     <div class="col-6 mb-1">
                         <label for="input27" class="form-label">Condiciones:</label>
-                        <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_auto3"
-                            rows="2"></textarea>
+                        <textarea class="form-control input-indigo" maxlength="250" id="input27"
+                            name="condiciones_auto3" rows="2"></textarea>
                     </div>
                 </div>
 
@@ -656,8 +670,8 @@
                     </div>
                     <div class="col-6 mb-1">
                         <label for="input27" class="form-label">Condiciones:</label>
-                        <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_auto4"
-                            rows="2"></textarea>
+                        <textarea class="form-control input-indigo" maxlength="250" id="input27"
+                            name="condiciones_auto4" rows="2"></textarea>
                     </div>
                 </div>
 
@@ -675,8 +689,8 @@
                     </div>
                     <div class="col-6 mb-1">
                         <label for="input27" class="form-label">Condiciones:</label>
-                        <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_auto5"
-                            rows="2"></textarea>
+                        <textarea class="form-control input-indigo" maxlength="250" id="input27"
+                            name="condiciones_auto5" rows="2"></textarea>
                     </div>
                 </div>
             </div>
@@ -688,14 +702,14 @@
             <div class="py-3 mx-3">
                 <div class="row justify-content-center align-items-center">
                     <div class="form-check mb-1 col-2">
-                        <input class="form-check-input check-indigo" type="checkbox" id="input27" name="autobus">
-                        <label class="form-check-label" for="input27">
+                        <input class="form-check-input check-indigo" type="checkbox" id="autobus" name="autobus">
+                        <label class="form-check-label" for="autobus">
                             AUTOBUS
                         </label>
                     </div>
                     <div class="col-3 mb-3">
-                        <label for="input27" class="form-label">Cantidad N°:</label>
-                        <input type="text" class="form-control input-indigo" id="input27" name="cant_bus">
+                        <label for="cant_bus" class="form-label">Cantidad N°:</label>
+                        <input type="text" class="form-control input-indigo" id="cant_bus" name="cant_bus">
                     </div>
                 </div>
 
@@ -816,7 +830,7 @@
                 </div>
                 <div class="col-4 mb-1">
                     <label for="input27" class="form-label">Condiciones:</label>
-                    <textarea class="form-control input-indigo"  maxlength="250" id="input27" name="condiciones_otro"
+                    <textarea class="form-control input-indigo" maxlength="250" id="input27" name="condiciones_otro"
                         rows="3"></textarea>
                 </div>
             </div>
@@ -933,14 +947,16 @@
 
             <div class="py-3 mx-3">
                 <!-- <label for="input27" class="form-label">Condiciones:</label> -->
-                <textarea class="form-control input-indigo" maxlength="700" id="input27" name="observacion" rows="5"></textarea>
+                <textarea class="form-control input-indigo" maxlength="700" id="input27" name="observacion"
+                    rows="5"></textarea>
             </div>
 
             <h4 class="bg-indigo px-3 py-2 text-center">RECOMENDACIONES</h4>
 
             <div class="py-3 mx-3">
                 <!-- <label for="input27" class="form-label">Condiciones:</label> -->
-                <textarea class="form-control input-indigo" id="input27" maxlength="700" name="recomendaciones" rows="5"></textarea>
+                <textarea class="form-control input-indigo" id="input27" maxlength="700" name="recomendaciones"
+                    rows="5"></textarea>
             </div>
 
             <h4 class="bg-indigo px-3 py-2 text-center">TESTIGO N° 1</h4>
