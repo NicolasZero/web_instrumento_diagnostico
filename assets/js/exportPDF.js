@@ -34,8 +34,18 @@ loadImages();
 
 
 function handleExportPDF(
-    dataFormObject
+    data
 ) {
+    // Convertir los valores de las props que sean numericos a string
+function convertNumbersToStrings(obj) {
+    for (let key in obj) {
+        if (typeof obj[key] === 'number') {
+            obj[key] = obj[key].toString();
+        }
+    }
+    return obj;
+}
+    const dataFormObject = convertNumbersToStrings(data);
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -226,7 +236,11 @@ function handleExportPDF(
             yPosition = 0; // Reset y position for the new page
         }
         doc.text(`${label}:`, 10, yPosition + 15, { maxWidth: maxWidthHeading });
-        doc.rect(80, yPosition - inputHeight + 17, inputWidth, inputHeight); // Draw input box
+        doc.rect(80, yPosition - inputHeight + 17, inputWidth, inputHeight);
+        if(typeof value === "number"){
+            value = value.toString();
+            doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading });
+        }// Draw input box
         doc.text(String(value), 82, yPosition + 15, { maxWidth: maxWidthHeading }); // Draw value inside input box
         yPosition += lineHeight + inputHeight; // Move down for the next line
     });
