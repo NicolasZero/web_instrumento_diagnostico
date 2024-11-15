@@ -15,8 +15,8 @@ export const generatePdf = async (id) => {
             console.log('Error:', json.error);
         }else{
             const data = json.data[0]
-            // handleExportPDF(data);
             console.log(data);
+            handleExportPDF(data);
         }
 
 

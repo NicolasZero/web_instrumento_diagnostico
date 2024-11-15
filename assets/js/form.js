@@ -21,24 +21,24 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 const sendForm = async (data) => {
-    console.log(data)
+    // console.log(data)
     try {
-        // data.key = "n1c0145"
-        // const response = await fetch('http://localhost:3000/registro/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // });
-        // const json = await response.json();
-        // if (!json.data) {
-        //     console.log('Error:', json.error);
+        data.key = "n1c0145"
+        const response = await fetch('http://localhost:3000/registro/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const json = await response.json();
+        if (!json.data) {
+            console.log('Error:', json.error);
             
-        // }else{
-        //     handleExportPDF(data);
-        //     console.log('Success:',json);
-        // }
+        }else{
+            handleExportPDF(data);
+            console.log('Success:',json);
+        }
 
 
     }

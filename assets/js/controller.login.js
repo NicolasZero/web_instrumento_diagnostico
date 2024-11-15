@@ -18,9 +18,10 @@ const verification = async () => {
             $("#alert").addClass('alert-success');
             $("#alert").html('Iniciando sesión...');
             $("#alert").removeClass('d-none');
+            const rol = res.rol
+            localStorage.setItem('inm-user', JSON.stringify({ user, pass, check,rol }))
             location.href = './page/registro'
-
-            localStorage.setItem('inm-user', JSON.stringify({ user, pass, check }))
+            // console.log(res.rol)
         } else {
             $("#alert").removeClass('alert-success');
             $("#alert").addClass('alert-danger');
