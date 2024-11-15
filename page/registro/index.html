@@ -80,23 +80,23 @@
             <div class="row justify-content-center align-items-end py-3 mx-3">
                 <div class="col-lg-4 mb-3 ">
                     <label for="input1-1" class="form-label">Nombre(s):</label>
-                    <input type="text" class="form-control input-indigo" id="input1-1" name="nombre">
+                    <input required type="text" class="form-control input-indigo" id="input1-1" name="nombre">
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="input1-2" class="form-label">Apellido(s):</label>
-                    <input type="text" class="form-control input-indigo" id="input1-2" name="apellido">
+                    <input required type="text" class="form-control input-indigo" id="input1-2" name="apellido">
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="input1-3" class="form-label">Cédula de identidad:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-3" name="cedula">
+                    <input required type="text" class="form-control input-indigo" id="input1-3" name="cedula">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="input1-4" class="form-label">Teléfono:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-4" name="telefono">
+                    <input required type="text" class="form-control input-indigo" id="input1-4" name="telefono">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="input1-5" class="form-label">Correo Electrónico:</label>
-                    <input type="text" class="form-control input-indigo" id="input1-5" name="correo">
+                    <input required type="text" class="form-control input-indigo" id="input1-5" name="correo">
                 </div>
             </div>
 
@@ -126,9 +126,9 @@
                 <div class="col-lg-4 mb-3 ">
                     <label for="input2-6" class="form-label">Estado:</label>
                     <!-- <input type="text" class="form-control input-indigo" id="input2-6" name="estado_id"> -->
-                    <select class="form-select input-indigo" id="input2-6" name="estado_id">
+                    <select required class="form-select input-indigo" id="input2-6" name="estado_id">
                         <option selected value="">Seleccione</option>
-                        <option value="CARACAS">CARACAS</option>
+                        <option value="DISTRITO CAPITAL">DISTRITO CAPITAL</option>
                         <option value="ANZOATEGUI">ANZOATEGUI</option>
                         <option value="APURE">APURE</option>
                         <option value="ARAGUA">ARAGUA</option>
@@ -151,7 +151,7 @@
                         <option value="ZULIA">ZULIA</option>
                         <option value="AMAZONAS">AMAZONAS</option>
                         <option value="DELTA AMACURO">DELTA AMACURO</option>
-                        <option value="VARGAS">VARGAS</option>
+                        <option value="GUAIRA">GUAIRA</option>
                     </select>
                 </div>
                 <div class="col-lg-4 mb-3">
@@ -194,7 +194,7 @@
                         <label for="input3-1" class="col-form-label">Sede</label>
                     </div>
                     <div class="col-lg-auto mb-4 mb-lg-0 ">
-                        <select class="form-select input-indigo" id="input3-1" name="sede_id">
+                        <select required class="form-select input-indigo" id="input3-1" name="sede_id">
                             <option selected value="">Seleccione</option>
                             <option value="Compartida">Compartida</option>
                             <option value="INAMUJER">INAMUJER</option>
@@ -809,7 +809,7 @@
                 </div>
             </div>
 
-            <hr>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Otros</h5>
 
             <div class="row justify-content-center pb-3 mx-3">
                 <div class="mb-3 col-lg-3" >
@@ -836,7 +836,7 @@
             </div>
 
             <h4 class="bg-indigo px-3 py-2 text-center">TALENTO HUMANO</h4>
-
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Mujeres</h5>
             <div class="row justify-content-center pt-3 mx-3">
                 <div class="mb-3 col-lg-3">
                     <label for="input27" class="form-label">Cantidad de mujeres:</label>
@@ -856,7 +856,7 @@
                 </div>
             </div>
 
-            <hr>
+            <h5 class="bg-secondary text-white px-3 py-1 text-center">Hombres</h5>
 
             <div class="row justify-content-center py-3 mx-3">
                 <div class="mb-3 col-lg-3">
