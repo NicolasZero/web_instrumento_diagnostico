@@ -1,4 +1,5 @@
 import handleExportPDF from "./exportPDF.js";
+import {columns} from "./datatable.columns.js";
 
 const spanishTranslation = {
     "decimal":        "",
@@ -22,7 +23,7 @@ const spanishTranslation = {
 export const generatePdf = async (id) => {
     try {
         // data.key = "n1c0145"
-        const response = await fetch(`http://localhost:3000/registro/${id}`, {
+        const response = await fetch(`http://localhost:3000/registro/id/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,12 +44,6 @@ export const generatePdf = async (id) => {
     }
 }
 
-const dino = () => {
-    console.log("dino");
-    
-}
-let data
-
 export const getData = async () => {
     try {
         const response = await fetch('http://localhost:3000/registro/', {
@@ -58,40 +53,42 @@ export const getData = async () => {
             },
         })
         const json = await response.json();
-        data = json.data
+        const data = json.data
         // console.log(JSON.stringify(json));
-        // console.log(data)
+        console.log(data)
         $('#example').DataTable({
             language: spanishTranslation,
             layout: {
-                topStart: {
-                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                top: {
+                    buttons: ['csv', 'excel']
                 }
             },
             data: data,
-            columns: [
-                {
-                    data: 'nombre',
-                    title: 'nombre'
-                },
-                {
-                    data: 'apellido',
-                    title: 'apellido'
-                },
-                {
-                    data: 'estado_id',
-                    title: 'estado'
-                },
-                {
-                    data: 'sede_id',
-                    title: 'sede'
-                },
-                {
-                    title: 'pdf'
-                }
-            ],
+            columns: columns,
+            // [
+            //     // {
+            //     //     data: 'nombre',
+            //     //     // visible:false
+            //     //     // title: 'nombre'
+            //     // },
+            //     // {
+            //     //     data: 'apellido',
+            //     //     // title: 'apellido'
+            //     // },
+            //     // {
+            //     //     data: 'estado_id',
+            //     //     // title: 'estado'
+            //     // },
+            //     // {
+            //     //     data: 'sede_id',
+            //     //     // title: 'sede'
+            //     // },
+            //     // {
+            //     //     title: ''
+            //     // }
+            // ],
             columnDefs: [
-                // { targets: 3, visible: false },
+                // { targets: [0,3], visible: true },
                 {
                     targets: -1,
                     orderable: false,
@@ -113,7 +110,6 @@ export const getData = async () => {
             e.preventDefault();
             const id = $(this).data().id
             generatePdf(id)
-            // console.log(id)
             
         });
     }

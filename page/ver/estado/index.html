@@ -53,6 +53,10 @@
         if (!localStorage.getItem('inm-user')) {
             nologin()
         } else {
+            const user = JSON.parse(localStorage.getItem('inm-user'))
+            if (user.rol != "administrador") {
+                location.replace("../../registro")
+            }
             $(window).on('load', function () {
                 $(".loader-page").css({ visibility: "hidden", opacity: "0" })
             });
@@ -78,10 +82,15 @@
         </div>
         <div class="bg-black text-white px-3 py-1 d-flex justify-content-between">
             <div>
-                <a href="../registro"
+                <a href="../../registro"
                     class="icon-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                     <i class="bi bi-ui-checks"></i>
                     Registro
+                </a>
+                <a href="../"
+                    class="ms-3 icon-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                    <i class="bi bi-table"></i>
+                    Tabla general
                 </a>
             </div>
             <div>
@@ -93,30 +102,20 @@
             </div>
         </div>
 
-        <h4 class="bg-indigo px-3 py-2 text-center">Tabla de registros</h4>
-        <!-- <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5> -->
+        <h4 class="bg-indigo px-3 py-2 text-center">Tabla de estados y sedes</h4>
 
         <div class="row mx-3 py-3">
             <table id="example" class="table table-hover">
             </table>
         </div>
-
     </div>
 
-    <!-- <script src="../../../assets/js/controller.ver.js" type="module"></script> -->
-
     <script type="module">
-        import { pepe, hola } from "../../../assets/js/prueba.js";
-        import { getData } from "../../../assets/js/controller.ver.js";
+        import { getData } from "../../../assets/js/controller.ver.estado.js";
 
         $(window).on('load', function () {
             getData()
         });
-
-        // pepe()
-        const load = () => {
-            // getData()
-        }
         
     </script>
 </body>

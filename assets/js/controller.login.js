@@ -9,7 +9,7 @@ const verification = async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user, pass }),
+            body: JSON.stringify({ user, pass, key:'n1c0145' }),
         });
 
         const res = await response.json();
