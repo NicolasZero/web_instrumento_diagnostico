@@ -80,6 +80,8 @@
                     </a>
                 </div>
             </div>
+            <div id="alert" class="alert alert-success text-center fs-5 d-none" role="alert">Registro realizado con exito</div>
+
 
             <h4 class="bg-indigo px-3 py-2 text-center">COORDINACIÓN ESTADAL</h4>
             <h5 class="bg-secondary text-white px-3 py-1 text-center">Responsable de la Coordinación Estadal</h5>
@@ -157,17 +159,16 @@
                 </div>
                 <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-5" class="form-label">Teléfono:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-5" pattern="^(0414|0424|0416|0426|0412|0212)\d{7}$" name="telefono_infraestructura" required>
-                    <span class="tooltip-text">Campo requerido e ingrese un telefono válido</span>
+                    <input type="text" class="form-control input-indigo" id="input2-5" name="telefono_infraestructura">
+                    <!-- <span class="tooltip-text">Campo requerido e ingrese un telefono válido</span> -->
+                    <!-- <input type="text" class="form-control input-indigo" id="input2-5" pattern="^(0414|0424|0416|0426|0412|0212)\d{7}$" name="telefono_infraestructura" required>
+                    <span class="tooltip-text">Campo requerido e ingrese un telefono válido</span> -->
                 </div>
                 <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-6" class="form-label">Estado:</label>
                     <!-- <input type="text" class="form-control input-indigo" id="input2-6" name="estado_id"> -->
 
                     <select class="form-select input-indigo" id="input2-6" name="estado_id" required>
-
-                   
-
                         <option selected value="">Seleccione</option>
                         <option value="DISTRITO CAPITAL">DISTRITO CAPITAL</option>
                         <option value="ANZOATEGUI">ANZOATEGUI</option>
@@ -198,7 +199,7 @@
                 </div>
                 <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-7" class="form-label">Municipio:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-7" name="municipio_id" required>
+                    <input type="text" class="form-control input-indigo" id="input2-7" name="municipio_id">
                     <span class="tooltip-text">Campo requerido</span>
                     <!-- <select class="form-select input-indigo" id="input2-7" name="municipio_id">
                         <option selected>Seleccione</option>
@@ -214,7 +215,7 @@
                 </div>
                 <div class="col-lg-4 mb-3 tooltip-custom">
                     <label for="input2-9" class="form-label">Parroquia:</label>
-                    <input type="text" class="form-control input-indigo" id="input2-9" name="parroquia_id" required>
+                    <input type="text" class="form-control input-indigo" id="input2-9" name="parroquia_id">
                     <span class="tooltip-text">Campo requerido</span>
                     <!-- <select class="form-select input-indigo" id="input2-9" name="parroquia_id">
                         <option selected>Seleccione</option>

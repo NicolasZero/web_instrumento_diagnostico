@@ -37,7 +37,9 @@ const sendForm = async (data) => {
             
         }else{
             handleExportPDF(data);
-            console.log('Success:',json);
+            $("#alert").removeClass('d-none');
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            // console.log('Success:',json);
         }
     }
     catch (error) {
