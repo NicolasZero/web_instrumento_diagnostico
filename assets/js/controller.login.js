@@ -9,7 +9,7 @@ const verification = async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user, pass, key:'n1c0145' }),
+            body: JSON.stringify({ user, pass, key: 'n1c0145' }),
         });
 
         const res = await response.json();
@@ -19,7 +19,7 @@ const verification = async () => {
             $("#alert").html('Iniciando sesión...');
             $("#alert").removeClass('d-none');
             const rol = res.rol
-            localStorage.setItem('inm-user', JSON.stringify({ user, pass, check,rol }))
+            localStorage.setItem('inm-user', JSON.stringify({ user, pass, check, rol }))
             location.href = './page/registro'
             // console.log(res.rol)
         } else {
@@ -36,6 +36,10 @@ const verification = async () => {
         // const data = res.data
 
     } catch (error) {
+        $("#alert").removeClass('alert-success');
+        $("#alert").addClass('alert-danger');
+        $("#alert").html('No se logro conectar con el servidor');
+        $("#alert").removeClass('d-none');
         console.error('Error:', error);
     }
 }
