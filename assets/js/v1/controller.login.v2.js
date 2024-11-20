@@ -4,7 +4,7 @@ const verification = async () => {
         const pass = $("#pass").val()
         const check = document.getElementById("check").checked
 
-        const response = await fetch('http://localhost:3000/auth/', {
+        const response = await fetch('http://diaginm.inamujer.gob.ve:3000/auth/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

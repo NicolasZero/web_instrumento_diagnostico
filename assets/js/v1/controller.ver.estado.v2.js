@@ -19,7 +19,7 @@ const spanishTranslation = {
 
 export const getData = async () => {
     try {
-        const response = await fetch('http://localhost:3000/registro/matriz', {
+        const response = await fetch('http://diaginm.inamujer.gob.ve:3000/registro/matriz', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

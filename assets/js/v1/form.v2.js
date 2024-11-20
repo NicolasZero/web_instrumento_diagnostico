@@ -1,4 +1,4 @@
-import handleExportPDF from "./exportPDF.js";
+import handleExportPDF from "../exportPDF.js";
 
 window.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('#myform')
@@ -24,7 +24,7 @@ const sendForm = async (data) => {
     // console.log(data)
     try {
         data.key = "n1c0145"
-        const response = await fetch('http://localhost:3000/registro/', {
+        const response = await fetch('http://diaginm.inamujer.gob.ve:3000/registro/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
